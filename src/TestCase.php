@@ -55,4 +55,19 @@ class TestCase extends \PHPUnit_Framework_TestCase
 
         return $result;
     }
+
+    /**
+     * Assert that the property value for a class is what's expected.
+     *
+     * @param mixed $expected The expected value.
+     * @param mixed $subject The class to reflect.
+     * @param string $property The property of the class to look up.
+     */
+    public function assertReflectedPropertyValue($expected, $subject, $property)
+    {
+        $property = $this->getReflectionProperty($subject, $property);
+        $result = $property->getValue($subject);
+
+        return $this->assertEquals($expected, $result);
+    }
 }
