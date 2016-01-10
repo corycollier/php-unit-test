@@ -66,7 +66,21 @@ class TestCase extends \PHPUnit_Framework_TestCase
     public function setReflectionPropertyValue($subject, $property, $value)
     {
         $property = $this->getReflectionProperty($subject, $property);
-        $property->setValue($value);
+        $property->setValue($subject, $value);
+    }
+
+    /**
+     * Gets the property value for a subject, using reflection.
+     *
+     * @param mixed $subject The instance to set the property value for.
+     * @param string $property The name of the property to modify.
+     *
+     * @return mixed Whatever the property value is.
+     */
+    public function getReflectionPropertyValue($subject, $property)
+    {
+        $property = $this->getReflectionProperty($subject, $property);
+        return $property->getValue($subject);
     }
 
     /**
@@ -78,8 +92,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
      */
     public function assertReflectedPropertyValue($expected, $subject, $property)
     {
-        $property = $this->getReflectionProperty($subject, $property);
-        $result = $property->getValue($subject);
+        $result = $this->getReflectionPropertyValue($subject, $property);
 
         return $this->assertEquals($expected, $result);
     }
