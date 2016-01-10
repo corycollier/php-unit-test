@@ -14,6 +14,7 @@ The purpose is merely to add some functions to cleanup usage of PHPUnit. Current
 
 * `getReflectionMethod($subject, $method)`
 * `getReflectionProperty($subject, $property)`
+* `getReflectionPropertyValue($subject, $property)`
 * `setReflectionPropertyValue($subject, $property, $value)`
 * `assertReflectionPropertyValue($expected, $subject, $property)`
 
@@ -22,11 +23,11 @@ The purpose is merely to add some functions to cleanup usage of PHPUnit. Current
 use \PhpUnitTest\TestCase as TestCase;
 class ExampleTest extends TestCase
 {
-  public function testSomething()
-  {
-    $expected = 'some expected value';
-    $sut = new NuttyClass;
-    $sut->doSomethign();
-    $this->assertReflectionPropertyValue($expected, $sut, 'internalProperty');
-  }
+    public function testSomething()
+    {
+        $expected = 'some expected value';
+        $sut = new NuttyClass;
+        $sut->doSomethign();
+        $this->assertReflectionPropertyValue($expected, $sut, 'internalProperty');
+    }
 }
