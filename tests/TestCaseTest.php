@@ -45,6 +45,35 @@ class TestCaseTest extends \PHPUnit_Framework_Testcase
     }
 
     /**
+     * Tests PhpUnitTest\TestCase::setReflectionPropertyValue
+     */
+    public function testSetReflectionPropertyValue()
+    {
+        $sut = $this->getMockBuilder('\PhpUnitTest\TestCase')
+            ->setMethods(array('getReflectionProperty'))
+            ->getMock();
+
+        $reflection = $this->getMockBuilder('\PhpUnitTest\TestingClass')
+            ->setMethods(array('setValue'))
+            ->getMock();
+
+        $property    = 'property';
+        $expected    = 'expected';
+        $testSubject = new TestingClass;
+
+        $reflection->expects($this->once())
+            ->method('setValue')
+            ->with($this->equalTo($expected));
+
+        $sut->expects($this->once())
+            ->method('getReflectionProperty')
+            ->with($this->equalTo($testSubject), $this->equalTo($property))
+            ->will($this->returnValue($reflection));
+
+        $sut->setReflectionPropertyValue($testSubject, $property, $expected);
+    }
+
+    /**
      * Tests PhpUnitTest\TestCase::assertReflectedPropertyValue
      */
     public function testAssertReflectedPropertyValue()
