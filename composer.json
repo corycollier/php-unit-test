@@ -1,0 +1,30 @@
+{
+    "name"              : "corycollier/php-unit-test",
+    "description"       : "An extension of the PHPUnit Testing Framework. Created to cleanup unit test writing.",
+    "license"           : "MIT",
+    "minimum-stability" : "dev",
+    "prefer-stable"     : true,
+    "homepage"          : "http://corycollier.github.io/php-unit-test/",
+    "authors": [
+        {
+            "name"     : "Cory Collier",
+            "email"    : "corycollier@corycollier.com",
+            "role"     : "developer",
+            "homepage" : "http://corycollier.com/"
+        }
+    ],
+
+    "require" : {
+        "phpunit/phpunit"           : "^5.1"
+    },
+
+    "require-dev" : {
+        "pdepend/pdepend"           : "^2.2",
+        "phpmd/phpmd"               : "^2.3",
+        "squizlabs/php_codesniffer" : "^2.5",
+        "sebastian/phpcpd"          : "^2.0",
+        "theseer/phpdox"            : "0.8.1.1",
+        "satooshi/php-coveralls"    : "^0.7.1",
+        "phploc/phploc"             : "^2.1"
+    }
+}
